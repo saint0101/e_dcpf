@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Service de l'API Flask
+  service_api:
+    build: ./backend
+    ports:
+      - "5052:5000"
+    depends_on:
+      - service_bd
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_RUN_HOST=0.0.0.0
+      - MYSQL_HOST=service_bd
+      - MYSQL_USER=Uroot_edcp
+      - MYSQL_PASSWORD=e.dcp@2023#
+      - MYSQL_DB=edcp_db
+    networks:
+      - mynetwork_backend
+  # Service de la base de données MariaDB
+  service_bd:
+    image: mariadb/server:10.4
+    ports:
+      - "3356:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=e.dcp@2023#
+      - MYSQL_DATABASE=edcp_db
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    networks:
+      - mynetwork_backend
+
+volumes:
+  mariadb_data:
+
+networks:
+  mynetwork_backend:
