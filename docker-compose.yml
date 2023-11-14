@@ -41,7 +41,7 @@ services:
       - ./site:/var/www/html
     networks:
       - mynetwork
-      - mynetwork_backend
+      # - mynetwork_backend
 
 volumes:
   mariadb_data:
