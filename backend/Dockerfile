@@ -1,13 +1,26 @@
+# Use an official Python runtime as a parent image
 FROM python:3.10
-EXPOSE 5000
+
+# Set the working directory to /app
 WORKDIR /app
-RUN git clone -b master https://github.com/saint0101/e_dcpf.git
+
+RUN git clone https://github.com/saint0101/apitestdp.git
+
+# Copy the current directory contents into the container at /app
 COPY . /app
-WORKDIR /app/e_dcpf/backend
-# Afficher le contenu du répertoire
-RUN ls .
-RUN pip install -r requirements.txt
-# Nettoyer les fichiers inutiles
+
+WORKDIR /app/apitestdp/backend
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 5000 available to the world outside this container
+EXPOSE 5000
+
+# Define environment variable
+ENV NAME World
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-WORKDIR /app/e_dcpf/backend/app
+
+# Run app.py when the container launches
 CMD ["flask", "run", "--host", "0.0.0.0", "--port", "5000"]
