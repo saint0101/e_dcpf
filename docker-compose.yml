@@ -1,4 +1,4 @@
-  GNU nano 4.8                                                                                                 docker-compose.yml                                                                                                            version: '3.8'
+version: '3.8'
 
 services:
   # Service de l'API Flask
