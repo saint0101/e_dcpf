@@ -26,5 +26,7 @@ WORKDIR /app/e_dcpf/backend/app/
 
 RUN ls .
 
+RUN apt-get install update
+
 # Run app.py when the container launches
 CMD ["flask", "run", "--host", "0.0.0.0", "--port", "5000"]
