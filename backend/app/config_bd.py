@@ -3,7 +3,7 @@ Config DB
 """
 
 CONFIG = {
-    'host': '0.0.0.0',
+    'host': '172.18.0.3',
     'port': 3356,
     'user': 'root',
     'password': 'rootpassword',
