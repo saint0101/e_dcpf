@@ -21,7 +21,7 @@ services:
 
   # Service de la base de données MariaDB
   service_bd:
-    image: mariadb/server:10.4
+    image: mariadb:10.4
     ports:
       - "3356:3306"
     environment:
