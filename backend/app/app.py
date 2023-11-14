@@ -2,7 +2,7 @@
 import flask
 import json
 import mariadb
-from app.config_bd import CONFIG
+from config_bd import CONFIG
 
 
 app = flask.Flask(__name__)
